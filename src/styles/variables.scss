@@ -1,0 +1,42 @@
+// =============================================================================
+// /styles/variables.scss
+// Variables SCSS globales. Este archivo lo lee Quasar (ver vite.config.js ->
+// quasar({ sassVariables: "src/styles/variables.scss" })) ANTES de compilar sus
+// propios estilos, por eso cambiar $primary aqui repinta toda la aplicacion:
+// botones, toolbars, tabs, inputs... todo lo que use color="primary".
+//
+// REGLA: aqui solo van valores, nunca selectores CSS.
+// =============================================================================
+
+// --- Colores de marca de Quasar (los nombres son fijos, no inventar otros) ---
+$primary: #1565c0; // azul: distingue a CatalogoBulk de la paleta verde de la referencia
+$secondary: #26a69a;
+$accent: #7c4dff;
+
+$dark: #1d1d1d;
+$dark-page: #14161a;
+
+$positive: #21ba45;
+$negative: #c10015;
+$info: #31ccec;
+$warning: #f2c037;
+
+// --- Paleta de apoyo (equivalente a la sección "verdes" de la referencia,
+// aquí en azul para no repetir marca) -----------------------------------
+$card-header: #0d47a1; // cabecera de cards
+$hover-bg: #e3f2fd; // fondo suave de hover
+$hover-border: #64b5f6; // hover y bordes activos
+$borde-tabla: #bbdefb;
+
+// --- Neutros ------------------------------------------------------------
+$texto-principal: #212121;
+$texto-fuerte: #424242;
+$texto-secundario: #616161;
+$color-texto-suave: #616161;
+$color-borde: #e0e0e0;
+$color-fondo-app: #fafafa;
+
+// --- Medidas --------------------------------------------------------------
+$radio-tarjeta: 8px;
+$radio-dialogo: 12px;
+$ancho-maximo-contenido: 1180px;

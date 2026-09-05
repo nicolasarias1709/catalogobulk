@@ -1,0 +1,164 @@
+// =============================================================================
+// /styles/main.scss
+// Estilos GLOBALES de la aplicacion. Se importa una sola vez en main.js.
+//
+// Si un estilo solo afecta a un componente, NO va aqui: va en el <style scoped>
+// de ese componente. Aqui solo lo que se repite en toda la app (estructura de
+// vista, tablas, dialogos, tarjetas, menu).
+// =============================================================================
+
+@use "./variables" as *;
+
+// -----------------------------------------------------------------------
+// 1. BASE
+// -----------------------------------------------------------------------
+body {
+  background-color: $color-fondo-app;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  color: $texto-principal;
+}
+
+.texto-suave {
+  color: $color-texto-suave;
+}
+
+// -----------------------------------------------------------------------
+// 2. ESTRUCTURA DE VISTA
+// -----------------------------------------------------------------------
+
+// Contenedor centrado con ancho maximo, usado por todas las vistas con datos.
+.contenedor-app {
+  width: 100%;
+  max-width: $ancho-maximo-contenido;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.titulo-vista {
+  font-size: 2.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+// La linea de color que va debajo del titulo de cada vista.
+.linea-titulo {
+  width: 83%;
+  height: 2px;
+  border: 0;
+  margin: 12px 0 0;
+  background-color: $primary;
+}
+
+// -----------------------------------------------------------------------
+// 3. TARJETAS
+// -----------------------------------------------------------------------
+.tarjeta {
+  border-radius: $radio-tarjeta;
+  border: 1px solid $color-borde;
+  background: #fff;
+  box-shadow: none;
+}
+
+// -----------------------------------------------------------------------
+// 4. BOTONES
+// -----------------------------------------------------------------------
+
+// Anchos minimos de los botones de dialogo, para que no queden desiguales.
+.btn-cancel {
+  min-width: 120px;
+}
+
+.btn-ok {
+  min-width: 220px;
+}
+
+// Botones de icono de las tablas: discretos, pero responden al mouse.
+.action-secondary {
+  opacity: 0.85;
+  transition: all 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    transform: scale(1.1);
+  }
+}
+
+// -----------------------------------------------------------------------
+// 5. DIALOGOS (formularios crear/editar)
+// -----------------------------------------------------------------------
+.dialog-card {
+  width: 520px;
+  max-width: 95vw;
+  border-radius: $radio-dialogo;
+  overflow: hidden;
+}
+
+.dialog-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+// -----------------------------------------------------------------------
+// 6. MENU LATERAL
+// -----------------------------------------------------------------------
+.enlace-menu {
+  border-radius: 12px;
+  margin: 2px 8px;
+
+  // router-link-active la pone vue-router en la ruta que se esta viendo.
+  &.router-link-active {
+    background-color: $primary;
+    color: white;
+    font-weight: 600;
+  }
+}
+
+// -----------------------------------------------------------------------
+// 7. TABLAS
+// Cabecera fija: la tabla scrollea por dentro y los titulos se quedan arriba.
+// -----------------------------------------------------------------------
+.my-sticky-header-table {
+  height: 60vh;
+
+  .q-table__top,
+  .q-table__bottom,
+  thead tr:first-child th {
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  tbody td {
+    font-size: 14px;
+  }
+
+  thead tr th {
+    position: sticky;
+    z-index: 1;
+  }
+
+  thead tr:first-child th {
+    top: 0;
+  }
+
+  &.q-table--loading thead tr:last-child th {
+    top: 48px;
+  }
+
+  tbody {
+    scroll-margin-top: 48px;
+  }
+}
+
+// -----------------------------------------------------------------------
+// 8. ESTADO VACIO
+// -----------------------------------------------------------------------
+.empty-title {
+  font-size: 15px;
+  color: #9e9e9e;
+}
