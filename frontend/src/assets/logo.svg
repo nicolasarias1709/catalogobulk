@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <!-- Logo de ejemplo. Los recursos estaticos (svg, png, fuentes) viven en
-       /assets y se importan con "import logo from '@/assets/logo.svg'" para
-       que Vite los incluya en el build con su hash de version. -->
-  <rect width="120" height="120" rx="26" fill="#1565c0" />
-  <text x="60" y="72" font-family="Arial, sans-serif" font-size="46" font-weight="bold"
-        text-anchor="middle" fill="#ffffff">CB</text>
-</svg>
