@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
   { path: '/', redirect: '/productos' },
   { path: '/login', component: () => import('../pages/LoginPage.vue'), meta: { publica: true } },
-  { path: '/productos', component: () => import('../pages/ProductosPage.vue') },
-  { path: '/categorias', component: () => import('../pages/CategoriasPage.vue') },
+  { path: '/productos', component: () => import('../pages/ProductosPage.vue'), meta: { publica: true } },
+  { path: '/categorias', component: () => import('../pages/CategoriasPage.vue'), meta: { publica: true } },
   { path: '/proveedores', component: () => import('../pages/ProveedoresPage.vue') },
   { path: '/importaciones', component: () => import('../pages/ImportacionesPage.vue') },
   { path: '/exportaciones', component: () => import('../pages/ExportacionesPage.vue') },

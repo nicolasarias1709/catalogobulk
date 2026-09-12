@@ -8,7 +8,7 @@
 
     <q-card class="tarjeta q-mb-md" flat bordered>
       <q-card-section class="row items-center">
-        <q-btn color="primary" icon="add" label="Nueva categoría" @click="abrirNuevo" />
+        <q-btn v-if="haySesion" color="primary" icon="add" label="Nueva categoría" @click="abrirNuevo" />
       </q-card-section>
     </q-card>
 
@@ -28,7 +28,7 @@
           </q-td>
         </template>
         <template #body-cell-acciones="props">
-          <q-td :props="props">
+          <q-td :props="props" v-if="haySesion">
             <q-btn flat dense round icon="edit" @click="editar(props.row)" />
           </q-td>
         </template>
@@ -62,6 +62,7 @@ import api from '../services/api';
 import EncabezadoPagina from '../components/EncabezadoPagina.vue';
 
 const categorias = ref([]);
+const haySesion = !!localStorage.getItem('token');
 const cargando = ref(false);
 const dialogoAbierto = ref(false);
 const editando = ref(false);

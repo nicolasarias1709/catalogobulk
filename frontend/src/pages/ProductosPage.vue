@@ -14,7 +14,7 @@
           class="col-grow"
           @keyup.enter="cargar"
         />
-        <q-btn color="primary" icon="add" label="Nuevo producto" @click="abrirNuevo" />
+        <q-btn v-if="haySesion" color="primary" icon="add" label="Nuevo producto" @click="abrirNuevo" />
       </q-card-section>
     </q-card>
 
@@ -36,7 +36,7 @@
           </q-td>
         </template>
         <template #body-cell-acciones="props">
-          <q-td :props="props">
+          <q-td :props="props" v-if="haySesion">
             <q-btn flat dense round icon="edit" @click="editar(props.row)" />
             <q-btn flat dense round icon="delete" color="negative" @click="eliminar(props.row)" />
           </q-td>
@@ -80,6 +80,7 @@ const dialogoAbierto = ref(false);
 const editando = ref(false);
 const guardando = ref(false);
 const form = ref({});
+const haySesion = !!localStorage.getItem('token');
 
 const paginacion = ref({ page: 1, rowsPerPage: 20, rowsNumber: 0 });
 
