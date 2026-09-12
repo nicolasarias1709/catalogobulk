@@ -44,4 +44,15 @@ function estadoMongo() {
   return mongoose.connection.readyState === 1 ? 'up' : 'down';
 }
 
-module.exports = { conectarMongo, estadoMongo };
+let promesaConexion = null;
+function asegurarConexionMongo() {
+  if (!promesaConexion) {
+    promesaConexion = conectarMongo().catch((err) => {
+      promesaConexion = null;
+      throw err;
+    });
+  }
+  return promesaConexion;
+}
+
+module.exports = { conectarMongo, estadoMongo, asegurarConexionMongo };

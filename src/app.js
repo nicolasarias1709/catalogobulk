@@ -6,7 +6,7 @@
 const express = require('express');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const { estadoMongo } = require('./config/db');
+const { estadoMongo, asegurarConexionMongo } = require('./config/db');
 const { estadoRedis } = require('./config/redis');
 const swaggerSpec = require('./config/swagger');
 const errorHandler = require('./middlewares/errorHandler');
@@ -19,7 +19,9 @@ function crearApp() {
   // frontend (Vite, http://localhost:5173) hace a esta API. origin: '*' es
   // el mismo criterio permisivo que ya usa src/sockets/index.js.
   app.use(cors());
-
+  app.use((req, res, next) => {
+  asegurarConexionMongo().then(() => next(), next);
+});
   app.use(express.json());
 
   // GET /health -> 200 si Mongo y Redis están arriba, 503 si alguno cayó
