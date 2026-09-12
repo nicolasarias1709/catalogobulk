@@ -46,6 +46,20 @@
     <div class="row q-col-gutter-md">
       <div class="col-12 col-sm-6 col-md-4" v-for="producto in productos" :key="producto._id">
         <q-card class="tarjeta" flat bordered>
+          <q-img
+            v-if="producto.imagenUrl"
+            :src="producto.imagenUrl"
+            :ratio="4/3"
+          >
+            <template #error>
+              <div class="absolute-full flex flex-center bg-grey-2">
+                <q-icon name="broken_image" size="40px" color="grey-5" />
+              </div>
+            </template>
+          </q-img>
+          <div v-else class="imagen-placeholder flex flex-center bg-grey-2">
+            <q-icon name="inventory_2" size="40px" color="grey-5" />
+          </div>
           <q-card-section>
             <div class="text-subtitle1 text-weight-medium">{{ producto.nombre }}</div>
             <div class="text-caption text-grey">{{ producto.categoria }}</div>
@@ -118,6 +132,7 @@
           <q-input v-model.number="form.precio" type="number" label="Precio" outlined dense />
           <q-input v-model.number="form.stock" type="number" label="Stock" outlined dense />
           <q-input v-model="form.categoria" label="Categoría" outlined dense />
+          <q-input v-model="form.imagenUrl" label="URL de la imagen" outlined dense hint="https://..." />
           <q-input v-model="form.proveedorId" label="ID del proveedor" outlined dense />
           <q-input v-model="form.descripcion" label="Descripción" outlined dense type="textarea" />
         </q-card-section>
@@ -204,7 +219,7 @@ function onRequest(props) {
 
 function abrirNuevo() {
   editando.value = false;
-  form.value = { sku: '', nombre: '', precio: 0, stock: 0, categoria: '', proveedorId: '', descripcion: '' };
+  form.value = { sku: '', nombre: '', precio: 0, stock: 0, categoria: '', proveedorId: '', descripcion: '', imagenUrl: '' };
   dialogoAbierto.value = true;
 }
 
@@ -261,5 +276,8 @@ onMounted(() => {
   height: 3px;
   background: var(--q-primary);
   margin: 8px auto 0;
+}
+.imagen-placeholder {
+  height: 150px;
 }
 </style>
